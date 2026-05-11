@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = 5000;
+const PORT = 5001;
 const CLIENT_ID = process.env.MICROSOFT_CLIENT_ID;
 const TENANT_ID = process.env.MICROSOFT_TENANT_ID || 'common';
 const CLIENT_SECRET = process.env.MICROSOFT_CLIENT_SECRET;

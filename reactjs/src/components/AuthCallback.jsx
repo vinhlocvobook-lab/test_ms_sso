@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -7,20 +7,27 @@ const AuthCallback = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const initialized = useRef(false);
 
   useEffect(() => {
+    if (initialized.current) return;
+    
     const code = searchParams.get('code');
+    console.log("AuthCallback: Nhận được mã code từ URL:", code);
+    
     if (code) {
-      // Gửi mã code lên NodeJS backend để đổi lấy token và info
-      axios.post('http://localhost:5000/api/auth/callback', { code })
+      initialized.current = true;
+      axios.post('http://localhost:5001/api/auth/callback', { code })
         .then(res => {
+          console.log("AuthCallback: Đã nhận dữ liệu từ Backend:", res.data);
           setUser(res.data);
         })
         .catch(err => {
-          console.error(err);
+          console.error("AuthCallback: Lỗi khi gọi API Backend:", err);
           setError(err.response?.data?.details || err.message);
         });
     } else {
+      console.warn("AuthCallback: Không tìm thấy mã code trong URL");
       setError('Không tìm thấy mã code trong URL');
     }
   }, [searchParams]);

@@ -4,11 +4,11 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       // Gọi backend để lấy URL đăng nhập Microsoft
-      const response = await axios.get('http://localhost:5000/api/auth/url');
+      const response = await axios.get('http://localhost:5001/api/auth/url');
       window.location.href = response.data.url;
     } catch (error) {
       console.error('Lỗi khi lấy URL đăng nhập:', error);
-      alert('Không thể kết nối với Backend NodeJS (Port 5000)');
+      alert('Không thể kết nối với Backend NodeJS (Port 5001)');
     }
   };
 
