@@ -19,7 +19,7 @@ const REDIRECT_URI = 'http://localhost:3000/auth/callback'; // Redirect về Fro
 
 // Endpoint 1: Trả về URL đăng nhập Microsoft
 app.get('/api/auth/url', (req, res) => {
-    const authUrl = `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_mode=query&scope=openid%20profile%20email%20User.Read`;
+    const authUrl = `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_mode=query&scope=openid%20profile%20email%20User.Read&prompt=select_account`;
     res.json({ url: authUrl });
 });
 

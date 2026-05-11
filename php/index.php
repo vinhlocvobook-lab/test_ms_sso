@@ -15,6 +15,7 @@ $params = [
     'response_mode' => 'query',
     'scope' => 'openid profile email User.Read',
     'state' => $_SESSION['state'],
+    'prompt' => 'select_account', // Ép buộc hiển thị bảng chọn tài khoản
 ];
 
 $login_url = $auth_url . "?" . http_build_query($params);
