@@ -53,7 +53,7 @@ const AuthCallback = () => {
       <p>Email: {user.mail || user.userPrincipalName}</p>
       
       <h3>Dữ liệu chi tiết từ Graph API:</h3>
-      <pre style={{ background: '#eee', padding: '10px', borderRadius: '4px', overflowX: auto }}>
+      <pre style={{ background: '#eee', padding: '10px', borderRadius: '4px', overflowX: 'auto' }}>
         {JSON.stringify(user, null, 2)}
       </pre>
       
