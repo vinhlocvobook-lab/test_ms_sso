@@ -30,7 +30,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $response = curl_exec($ch);
 $data = json_decode($response, true);
-curl_close($ch);
+// curl_close($ch); // Không cần thiết trong PHP 8.0+
+
 
 if (isset($data['error'])) {
     echo "<h2>Lỗi lấy Token:</h2>";
@@ -51,7 +52,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $user_data = curl_exec($ch);
 $user = json_decode($user_data, true);
-curl_close($ch);
+// curl_close($ch); // Không cần thiết trong PHP 8.0+
+
 
 ?>
 
